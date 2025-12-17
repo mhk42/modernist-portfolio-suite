@@ -180,9 +180,13 @@
                 <div class="space-y-12">
                     <!-- Project 1: MedCheck -->
                     <div class="grid lg:grid-cols-12 gap-8 items-center p-8 bg-white rounded-2xl shadow-xl border border-gray-100">
-                        <div class="lg:col-span-5 h-64 bg-gray-100 rounded-xl flex items-center justify-center border border-dashed border-gray-300">
-                            <span class="text-gray-400 font-mono">[MedCheck System Visualization]</span>
-                        </div>
+                        <div class="lg:col-span-5 h-64 rounded-xl overflow-hidden border border-dashed border-gray-300 relative bg-gray-100">
+                                <!-- Image placeholder: drop a file at src/images/medcheck-placeholder.png -->
+                                <img src="../images/medcheck.jpg" alt="MedCheck screenshot placeholder" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <span class="text-gray-400 font-mono"></span>
+                                </div>
+                            </div>
                         <div class="lg:col-span-7">
                             <h3 class="text-3xl font-bold mb-2">MedCheck</h3>
                             <p class="text-sm font-semibold text-cm-accent mb-4">Patient Prioritization Engine</p>
@@ -207,8 +211,12 @@
                                 <a href="#" class="text-cm-dark font-bold underline hover:text-cm-accent transition-colors">Read Case Study &rarr;</a>
                             </div>
                         </div>
-                        <div class="lg:col-span-5 h-64 bg-gray-100 rounded-xl flex items-center justify-center border border-dashed border-gray-300">
-                            <span class="text-gray-400 font-mono">[Dashboard Analytics UI]</span>
+                        <div class="lg:col-span-5 h-64 rounded-xl overflow-hidden border border-dashed border-gray-300 relative bg-gray-100 flex items-center justify-center">
+                            <!-- Image placeholder: replace with ../images/vigortrack-placeholder.png -->
+                            <img src="../images/fitness.jpg" alt="VigorTrack dashboard placeholder" class="w-full h-full object-cover object-top">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 top-3 bg-white/70 px-3 py-1 rounded-full pointer-events-none">
+                                <span class="text-gray-600 text-sm font-mono"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
