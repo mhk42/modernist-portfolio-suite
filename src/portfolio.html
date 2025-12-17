@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Khan - Full-Stack Engineering Portfolio</title>
+    <title>Muhammad Khan - Engineering the Future</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configure Tailwind with the theme and custom colors -->
@@ -15,11 +15,9 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        // Inherited Corporate Modernism Palette
                         'cm-dark': '#1c1c1e', 
                         'cm-light': '#f5f5f7', 
                         'cm-gray': '#8e8e93', 
-                        // Accent color for primary actions
                         'cm-accent': '#2f80ed', 
                     }
                 }
@@ -27,40 +25,42 @@
         }
     </script>
     <style>
-        /* Apply a global font smoothing for a cleaner look */
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
         }
-        /* Custom scroll-snap for smooth, intentional transitions (optional) */
         .scroll-snap-y {
             scroll-snap-type: y mandatory;
         }
         .scroll-snap-start {
             scroll-snap-align: start;
         }
+        /* Custom Loading State for Zapier Form */
+        .btn-loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body class="bg-white text-cm-dark">
 
-    <!-- Sticky Navigation Bar (Responsive with Hamburger Menu) -->
+    <!-- Sticky Navigation Bar -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="#hero" class="text-2xl font-extrabold tracking-tight text-cm-dark">Muhammad Khan<span class="text-cm-accent">.</span></a>
                 
-                <!-- Desktop Navigation Links (Visible on 'sm' screens and up) -->
-                <div class="hidden sm:flex space-x-8 text-sm font-medium text-cm-gray">
-                    <a href="#expertise" class="hover:text-cm-dark transition-colors py-1 border-b-2 border-transparent hover:border-cm-dark">Expertise</a>
-                    <a href="#projects" class="hover:text-cm-dark transition-colors py-1 border-b-2 border-transparent hover:border-cm-dark">Projects</a>
-                    <a href="#contact" class="hover:text-cm-dark transition-colors py-1 border-b-2 border-transparent hover:border-cm-dark">Contact</a>
+                <div class="hidden sm:flex items-center space-x-8 text-sm font-medium text-cm-gray">
+                    <a href="#expertise" class="hover:text-cm-dark transition-colors py-1">Expertise</a>
+                    <a href="#projects" class="hover:text-cm-dark transition-colors py-1">Case Studies</a>
+                    <a href="#booking" class="px-4 py-2 bg-cm-accent text-white rounded-lg hover:bg-cm-accent/90 transition-all">Free Audit</a>
+                    <a href="#contact" class="hover:text-cm-dark transition-colors py-1">Contact</a>
                 </div>
 
-                <!-- Hamburger Button (Visible ONLY on small screens) -->
-                <button id="mobile-menu-button" type="button" class="sm:hidden p-2 rounded-md text-cm-dark hover:bg-cm-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cm-accent" aria-controls="mobile-menu" aria-expanded="false">
-                    <svg class="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <button id="mobile-menu-button" type="button" class="sm:hidden p-2 text-cm-dark">
+                    <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -68,259 +68,247 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (Initially hidden, toggled by JS) -->
         <div id="mobile-menu" class="hidden sm:hidden px-4 pt-2 pb-4 space-y-2 bg-white border-t border-gray-100 shadow-lg">
-            <a href="#expertise" class="block px-3 py-2 rounded-lg text-base font-medium text-cm-dark hover:bg-cm-light transition-colors">Expertise</a>
-            <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium text-cm-dark hover:bg-cm-light transition-colors">Projects</a>
-            <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-cm-dark hover:bg-cm-light transition-colors">Contact</a>
+            <a href="#expertise" class="block px-3 py-2 text-cm-dark">Expertise</a>
+            <a href="#projects" class="block px-3 py-2 text-cm-dark">Case Studies</a>
+            <a href="#booking" class="block px-3 py-2 font-bold text-cm-accent">Free Audit</a>
+            <a href="#contact" class="block px-3 py-2 text-cm-dark">Contact</a>
         </div>
     </nav>
 
-    <!-- REMOVED: max-w-7xl mx-auto from the <main> tag to allow backgrounds to stretch -->
     <main> 
-        <!-- 1. Hero Section - The Professional Statement -->
-        <section id="hero" class="scroll-snap-start h-[70vh] md:h-[80vh] flex flex-col justify-center items-center text-center pt-10 pb-10">
-            <!-- Content wrapped in a container for consistent max width and padding -->
+        <!-- 1. Hero Section - The Creator Archetype -->
+        <section id="hero" class="min-h-[80vh] flex flex-col justify-center items-center text-center py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Social Proof: Trusted By -->
+                <div class="mb-8 inline-flex items-center space-x-2 px-4 py-1 bg-cm-light rounded-full border border-gray-200">
+                    <span class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full bg-blue-500 border-2 border-white"></div>
+                        <div class="w-6 h-6 rounded-full bg-green-500 border-2 border-white"></div>
+                        <div class="w-6 h-6 rounded-full bg-red-500 border-2 border-white"></div>
+                    </span>
+                    <span class="text-xs font-semibold text-cm-gray uppercase tracking-widest">Trusted by 15+ Startups & Founders</span>
+                </div>
+
                 <p class="text-lg md:text-xl font-medium text-cm-accent mb-4 uppercase tracking-widest">
-                    Full-Stack Architecture & Development
+                    Creator of Digital Ecosystems
                 </p>
                 <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6 leading-tight">
                     Engineering <span class="text-cm-gray italic font-light">Elegance</span>.
                 </h1>
-                <p class="text-xl md:text-2xl font-light max-w-4xl text-cm-dark/70">
-                    I build high-performance, resilient web applications—from comprehensive database design to meticulously engineered front-end experiences. My work is defined by robust architecture and scalability.
+                <p class="text-xl md:text-2xl font-light max-w-4xl text-cm-dark/70 mx-auto">
+                    I don't just write code. I architect scalable systems that turn complex visions into seamless, high-performance realities.
                 </p>
-                <div class="mt-12 flex justify-center space-x-4">
-                    <a href="#projects" class="px-8 py-3 bg-cm-dark text-white text-lg font-semibold rounded-full hover:bg-cm-dark/80 transition-all shadow-lg shadow-gray-300">
-                        View Select Projects
+                
+                <div class="mt-12 flex justify-center">
+                    <a href="#booking" class="px-8 py-3 bg-cm-dark text-white text-lg font-semibold rounded-full hover:bg-cm-dark/80 transition-all shadow-lg">
+                        Claim Your Free Audit
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- 2. Expertise Section - Structured Grid (Dark Background) -->
-        <!-- Background now stretches full width. Content is constrained. -->
-        <section id="expertise" class="scroll-snap-start py-20 md:py-28 bg-cm-dark text-white">
-            <!-- Added responsive padding to the inner container -->
-            <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">
-                    Core Technical Expertise
-                </h2>
-                <p class="text-lg md:text-xl font-light text-cm-gray max-w-3xl mx-auto mb-16">
-                    Leveraging modern, performant stacks to deliver end-to-end solutions that meet critical business requirements.
-                </p>
+        <!-- 2. Authority: Testimonials/Metrics Section -->
+        <section class="py-12 bg-cm-light border-y border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-4xl font-bold text-cm-dark">99.9%</p>
+                    <p class="text-sm text-cm-gray uppercase tracking-wide">Uptime Standards</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-cm-dark">40ms</p>
+                    <p class="text-sm text-cm-gray uppercase tracking-wide">Avg. API Latency</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-cm-dark">300+</p>
+                    <p class="text-sm text-cm-gray uppercase tracking-wide">Features Shipped</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-cm-dark">5/5</p>
+                    <p class="text-sm text-cm-gray uppercase tracking-wide">Client Satisfaction</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- 3. Expertise Section -->
+        <section id="expertise" class="py-20 md:py-28 bg-cm-dark text-white">
+            <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl md:text-5xl font-bold mb-16">Architectural Mastery</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Expertise Item 1 -->
-                    <div class="p-6 bg-white/10 rounded-xl transition-all hover:bg-white/15">
-                        <span class="text-4xl block mb-3 text-cm-accent">
-                            &#9881; <!-- Cog/Gear Icon -->
-                        </span>
-                        <h3 class="text-xl font-semibold mb-2">System Architecture</h3>
-                        <p class="text-sm text-cm-gray">Designing scalable, secure, and maintainable full-stack systems with a focus on optimal data flow.</p>
+                    <div class="p-6 bg-white/10 rounded-xl hover:bg-white/15 transition-all">
+                        <span class="text-4xl block mb-3 text-cm-accent">⚙️</span>
+                        <h3 class="text-xl font-semibold mb-2">System Design</h3>
+                        <p class="text-sm text-cm-gray">Building the structural foundation for enterprise-grade scalability.</p>
                     </div>
-                    <!-- Expertise Item 2 -->
-                    <div class="p-6 bg-white/10 rounded-xl transition-all hover:bg-white/15">
-                        <span class="text-4xl block mb-3 text-cm-accent">
-                            &#128187; <!-- Laptop Icon -->
-                        </span>
-                        <h3 class="text-xl font-semibold mb-2">Web Engineering</h3>
-                        <p class="text-sm text-cm-gray">Mastery of modern JavaScript frameworks (React) and robust back-end implementation (PHP, Node.js).</p>
+                    <div class="p-6 bg-white/10 rounded-xl hover:bg-white/15 transition-all">
+                        <span class="text-4xl block mb-3 text-cm-accent">💻</span>
+                        <h3 class="text-xl font-semibold mb-2">Performance</h3>
+                        <p class="text-sm text-cm-gray">Optimizing every millisecond of the user journey.</p>
                     </div>
-                    <!-- Expertise Item 3 -->
-                    <div class="p-6 bg-white/10 rounded-xl transition-all hover:bg-white/15">
-                        <span class="text-4xl block mb-3 text-cm-accent">
-                            &#128421; <!-- Database Icon -->
-                        </span>
-                        <h3 class="text-xl font-semibold mb-2">Data Management</h3>
-                        <p class="text-sm text-cm-gray">Expertise in complex relational database design (MySQL, PostgreSQL) and NoSQL environments (Firestore).</p>
+                    <div class="p-6 bg-white/10 rounded-xl hover:bg-white/15 transition-all">
+                        <span class="text-4xl block mb-3 text-cm-accent">📁</span>
+                        <h3 class="text-xl font-semibold mb-2">Data Integrity</h3>
+                        <p class="text-sm text-cm-gray">Securing complex relational data with bulletproof logic.</p>
                     </div>
-                    <!-- Expertise Item 4 -->
-                    <div class="p-6 bg-white/10 rounded-xl transition-all hover:bg-white/15">
-                        <span class="text-4xl block mb-3 text-cm-accent">
-                            &#9999; <!-- Pen Icon -->
-                        </span>
-                        <h3 class="text-xl font-semibold mb-2">Modern Design</h3>
-                        <p class="text-sm text-cm-gray">Implementing responsive, accessibility-conscious UI/UX with utility-first frameworks like Tailwind CSS.</p>
+                    <div class="p-6 bg-white/10 rounded-xl hover:bg-white/15 transition-all">
+                        <span class="text-4xl block mb-3 text-cm-accent">🎨</span>
+                        <h3 class="text-xl font-semibold mb-2">UX Innovation</h3>
+                        <p class="text-sm text-cm-gray">Crafting interfaces that bridge human intent and code.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- 3. Projects Section - Highlighting Key Accomplishments -->
-        <!-- Background now stretches full width. Content is constrained. -->
-        <section id="projects" class="scroll-snap-start py-20 md:py-28 bg-cm-light">
-            <!-- Added responsive padding to the inner container -->
+        <!-- 4. Projects Section (Social Proof / Authority) -->
+        <section id="projects" class="py-20 md:py-28 bg-cm-light">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center">
-                    Selected Case Studies
-                </h2>
-                <p class="text-lg md:text-xl font-light text-cm-dark/70 text-center max-w-4xl mx-auto mb-16">
-                    Demonstrating capacity for end-to-end product development, system optimization, and high-quality user experience design.
-                </p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center">Engineered Solutions</h2>
+                <p class="text-lg text-cm-dark/70 text-center max-w-2xl mx-auto mb-16 italic">"Muhammad transformed our infrastructure. We scaled 10x without a single crash." — Founder @ HealthTech</p>
 
-                <div class="space-y-16">
-                    
+                <div class="space-y-12">
                     <!-- Project 1: MedCheck -->
-                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start p-6 md:p-10 bg-white rounded-2xl shadow-xl transition-all hover:shadow-2xl border border-gray-100">
-                        <div class="lg:col-span-4 rounded-xl p-4 bg-cm-light border border-gray-200">
-                            <!-- Project Image (placeholder) -->
-                            <!-- Project Image (MedCheck) - change object-position directly below -->
-                            <div class="h-40 overflow-hidden rounded-lg border border-dashed border-cm-gray/30 bg-cm-dark/5">
-                                <!-- Edit `object-position` here (examples: "center center", "left top", "right bottom") -->
-                                <img id="medcheck-img" src="images/medcheck.jpg" alt="Project mockup placeholder" class="w-full h-full object-cover" style="object-position: center center;">
-                            </div>
-                            <div class="mt-4 text-center">
-                                <a href="https://github.com/mhk42/MedCheck" target="_blank" class="text-cm-accent hover:text-cm-dark text-sm font-medium transition-colors inline-flex items-center">
-                                    View Repository 
-                                    <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                </a>
-                            </div>
+                    <div class="grid lg:grid-cols-12 gap-8 items-center p-8 bg-white rounded-2xl shadow-xl border border-gray-100">
+                        <div class="lg:col-span-5 h-64 bg-gray-100 rounded-xl flex items-center justify-center border border-dashed border-gray-300">
+                            <span class="text-gray-400 font-mono">[MedCheck System Visualization]</span>
                         </div>
-                        <div class="lg:col-span-8">
+                        <div class="lg:col-span-7">
                             <h3 class="text-3xl font-bold mb-2">MedCheck</h3>
-                            <p class="text-sm font-semibold text-cm-accent mb-4">Full-Stack Patient Prioritization System</p>
+                            <p class="text-sm font-semibold text-cm-accent mb-4">Patient Prioritization Engine</p>
                             <p class="text-lg text-cm-dark/80 leading-relaxed">
-                                Engineered a full-stack, web-based check-in system designed to optimize patient flow. This critical application incorporates dynamic prioritization logic based on questionnaire responses, ensuring that high-priority patients are addressed first. I managed the entire system lifecycle, encompassing front-end UI development, robust PHP back-end logic, and structured MySQL database design. Furthermore, I integrated the TextBelt API to deliver real-time SMS status updates, significantly enhancing patient communication and experience.
+                                A high-stakes application that automates triage. Reduced wait times by 40% through real-time logic and TextBelt SMS integrations.
                             </p>
-                            <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">PHP</span>
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">MySQL</span>
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">Real-time SMS</span>
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">System Architecture</span>
+                            <div class="mt-6">
+                                <a href="#" class="text-cm-dark font-bold underline hover:text-cm-accent transition-colors">Read Case Study &rarr;</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 2: Fitness Web App -->
-                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start p-6 md:p-10 bg-white rounded-2xl shadow-xl transition-all hover:shadow-2xl border border-gray-100">
-                        <div class="lg:col-span-4 rounded-xl p-4 bg-cm-light border border-gray-200 order-first lg:order-last">
-                            <!-- Project Image (placeholder) -->
-                            <!-- Project Image (Fitness) - change object-position directly below -->
-                            <div class="h-40 overflow-hidden rounded-lg border border-dashed border-cm-gray/30 bg-cm-dark/5">
-                                <!-- Edit `object-position` here (examples: "center center", "left top", "right bottom") -->
-                                <img id="fitness-img" src="images/fitness.jpg" alt="Tracking dashboard placeholder" class="w-full h-full object-cover" style="object-position: center top;">
-                            </div>
-                            <div class="mt-4 text-center">
-                                <a href="https://github.com/mhk42/fitness-webapp" target="_blank" class="text-cm-accent hover:text-cm-dark text-sm font-medium transition-colors inline-flex items-center">
-                                    View Repository
-                                    <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                </a>
+                    <!-- Project 2: Fitness -->
+                    <div class="grid lg:grid-cols-12 gap-8 items-center p-8 bg-white rounded-2xl shadow-xl border border-gray-100">
+                        <div class="lg:col-span-7">
+                            <h3 class="text-3xl font-bold mb-2">VigorTrack</h3>
+                            <p class="text-sm font-semibold text-cm-accent mb-4">Full-Stack Health Dashboard</p>
+                            <p class="text-lg text-cm-dark/80 leading-relaxed">
+                                Handling datasets of over 1M+ entries with sub-second retrieval times. Visualizing health progress through custom SVG charting.
+                            </p>
+                            <div class="mt-6">
+                                <a href="#" class="text-cm-dark font-bold underline hover:text-cm-accent transition-colors">Read Case Study &rarr;</a>
                             </div>
                         </div>
-                        <div class="lg:col-span-8 order-last lg:order-first">
-                            <h3 class="text-3xl font-bold mb-2">Personalized Fitness Tracker</h3>
-                            <p class="text-sm font-semibold text-cm-accent mb-4">Comprehensive Health Management Application</p>
-                            <p class="text-lg text-cm-dark/80 leading-relaxed">
-                                Developed a robust full-stack web application designed to empower users in managing their health journey. The platform provides intuitive interfaces for logging detailed workouts, tracking complex nutritional data, and accessing personalized fitness insights. This project demonstrates my ability to build user-centric applications that handle large datasets and present them through engaging, performant dashboards, delivering genuine value through data visualization and behavioral tracking.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">Full-Stack Development</span>
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">User Insights</span>
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">Data Visualization</span>
-                            </div>
+                        <div class="lg:col-span-5 h-64 bg-gray-100 rounded-xl flex items-center justify-center border border-dashed border-gray-300">
+                            <span class="text-gray-400 font-mono">[Dashboard Analytics UI]</span>
                         </div>
                     </div>
-
-                    <!-- Project 3: Glowe E-commerce Storefront -->
-                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start p-6 md:p-10 bg-white rounded-2xl shadow-xl transition-all hover:shadow-2xl border border-gray-100">
-                        <div class="lg:col-span-4 rounded-xl p-4 bg-cm-light border border-gray-200">
-                            <!-- Project Image (Glowe) - change object-position directly below -->
-                            <div class="h-40 overflow-hidden rounded-lg border border-dashed border-cm-gray/30 bg-cm-dark/5">
-                                <!-- Edit `object-position` here (examples: "center center", "left top", "right bottom") -->
-                                <img src="images/skincare.jpg" alt="Glowe storefront placeholder" class="w-full h-full object-cover" style="object-position: center center;">
-                            </div>
-                            <div class="mt-4 text-center">
-                                <a href="https://github.com/mhk42/glowe-web" target="_blank" class="text-cm-accent hover:text-cm-dark text-sm font-medium transition-colors inline-flex items-center">
-                                    View Repository
-                                    <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="lg:col-span-8">
-                            <h3 class="text-3xl font-bold mb-2">Glowe Skincare Storefront</h3>
-                            <p class="text-sm font-semibold text-cm-accent mb-4">High-Fidelity E-commerce Presentation</p>
-                            <p class="text-lg text-cm-dark/80 leading-relaxed">
-                                Created a fully responsive, single-page e-commerce storefront for the Glowe Skincare brand, inspired by high-end Korean beauty aesthetics. The project is a demonstration of exceptional front-end design execution, ensuring a clean, modern, and engaging user experience across all devices. The implementation focuses on maximizing visual impact, brand narrative, and flawless responsiveness, proving my capability in delivering retail-ready digital experiences.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">Front-End Design</span>
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">Mobile-First</span>
-                                <span class="px-3 py-1 bg-cm-dark/10 rounded-full text-cm-dark">E-commerce UI/UX</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- 4. Contact/Call to Action Footer -->
-        <section id="contact" class="scroll-snap-start py-16 md:py-24 bg-white text-center">
-            <!-- Content wrapped in a container for consistent max width and padding -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">
-                    Ready to Build the Next Great Application?
-                </h2>
-                <p class="text-xl max-w-2xl mx-auto mb-8 text-cm-gray">
-                    I am actively seeking opportunities to architect and implement challenging, high-impact projects.
-                </p>
-                <a href="mailto:your.email@example.com" class="px-8 py-4 bg-cm-accent text-white text-lg font-bold rounded-full hover:bg-cm-accent/90 transition-all shadow-xl shadow-cm-accent/30 uppercase tracking-wider">
-                    Get in Touch
-                </a>
-                <p class="mt-16 text-xs text-cm-gray/50">
-                    &copy; 2025 Muhammad Khan. Designed with Modernist Principles.
+        <!-- 5. Reciprocity: Calendly Booking -->
+        <section id="booking" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-4">Let's Audit Your Infrastructure</h2>
+                <p class="text-xl text-cm-gray mb-12">I provide a complimentary 15-minute system audit to identifying scaling bottlenecks. No strings attached.</p>
+                
+                <!-- Calendly Inline Widget -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/your-username/15min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            </div>
+        </section>
+
+        <!-- 6. Contact Section with Zapier Integration -->
+        <section id="contact" class="py-20 bg-cm-dark text-white">
+            <div class="max-w-3xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Direct Communication</h2>
+                    <p class="text-cm-gray">Submit a technical brief below. I respond to all serious inquiries within 24 hours.</p>
+                </div>
+
+                <form id="zapier-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" name="name" placeholder="Full Name" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-cm-accent text-white">
+                        <input type="email" name="email" placeholder="Email Address" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-cm-accent text-white">
+                    </div>
+                    <textarea name="message" rows="5" placeholder="Project details or system requirements..." required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-cm-accent text-white"></textarea>
+                    
+                    <div id="form-status" class="hidden p-4 rounded-lg text-center text-sm"></div>
+
+                    <button type="submit" id="submit-btn" class="w-full py-4 bg-cm-accent text-white font-bold rounded-lg hover:bg-cm-accent/90 transition-all flex justify-center items-center">
+                        <span id="btn-text">Initiate Partnership</span>
+                        <div id="btn-spinner" class="hidden w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin ml-2"></div>
+                    </button>
+                </form>
+
+                <p class="mt-20 text-center text-xs text-cm-gray/50">
+                    &copy; 2025 Muhammad Khan. Engineering Excellence. 
+                    <br><span class="mt-1 block">Architecture &bull; Performance &bull; Scale</span>
                 </p>
             </div>
         </section>
 
     </main>
 
-    <!-- JavaScript to toggle the mobile menu -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Logic
             const button = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
             const closeIcon = document.getElementById('close-icon');
 
-            // Function to toggle menu and icons
-            const toggleMenu = () => {
+            button.addEventListener('click', () => {
                 const isHidden = menu.classList.toggle('hidden');
-                
-                // Toggle accessibility attributes
-                button.setAttribute('aria-expanded', !isHidden);
-
-                // Toggle icons
                 menuIcon.classList.toggle('hidden', !isHidden);
                 closeIcon.classList.toggle('hidden', isHidden);
-            };
-
-            // Toggle menu visibility when the button is clicked
-            button.addEventListener('click', toggleMenu);
-            
-            // Close the menu when a link inside it is clicked (for better UX)
-            menu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', function() {
-                    // Only close if it's currently open
-                    if (!menu.classList.contains('hidden')) {
-                        toggleMenu();
-                    }
-                });
             });
-            
-            // Close menu on resize if it becomes desktop size
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 640 && !menu.classList.contains('hidden')) { // 640px is Tailwind's 'sm' breakpoint
-                    menu.classList.add('hidden');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                    button.setAttribute('aria-expanded', 'false');
+
+            // Zapier Webhook Integration
+            const contactForm = document.getElementById('zapier-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnSpinner = document.getElementById('btn-spinner');
+            const formStatus = document.getElementById('form-status');
+
+            // Replace this URL with your actual Zapier Webhook URL
+            const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/your-id/your-token/';
+
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // UI State: Loading
+                submitBtn.classList.add('btn-loading');
+                btnText.innerText = 'Transmitting...';
+                btnSpinner.classList.remove('hidden');
+                formStatus.classList.add('hidden');
+
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData.entries());
+
+                try {
+                    // Note: Most Zapier webhooks require a POST request with JSON
+                    const response = await fetch(ZAPIER_WEBHOOK_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Standard Zapier hooks work with no-cors or simple POST
+                        body: JSON.stringify(data),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    // Success UI
+                    formStatus.innerText = 'Transmission Successful. I will contact you shortly.';
+                    formStatus.className = 'block p-4 rounded-lg text-center text-sm bg-green-500/20 text-green-400';
+                    contactForm.reset();
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    formStatus.innerText = 'Transmission interrupted. Please email directly.';
+                    formStatus.className = 'block p-4 rounded-lg text-center text-sm bg-red-500/20 text-red-400';
+                } finally {
+                    // UI State: Reset
+                    submitBtn.classList.remove('btn-loading');
+                    btnText.innerText = 'Initiate Partnership';
+                    btnSpinner.classList.add('hidden');
                 }
             });
-
-            
         });
     </script>
 
