@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology | Systematic Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // --- Consistent Modern Corporate Configuration ---
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'corporate-primary': '#0056b3', // Deep Blue
+                        'corporate-dark': '#1c1c1c', // Near Black for stark contrast
+                        'corporate-light': '#f8f9fa', // Lighter background for more contrast
+                        'corporate-border': '#e9ecef', // Very light grey border
+                        'corporate-accent': '#007bff', // Bright blue for interaction
+                        'corporate-secondary': '#6c757d', // Muted grey for supporting text
+                        'corporate-step': '#d0e0f0', // Very light blue for process step background
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'Helvetica', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'modern': '0 2px 8px rgba(0, 0, 0, 0.05)',
+                        'modern-hover': '0 8px 24px rgba(0, 0, 0, 0.1)',
+                        'accent-focus': '0 0 0 3px rgba(0, 123, 255, 0.25)', 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base page animation (Consistent) */
+        body { 
+            background-color: #f8f9fa; 
+            opacity: 0; 
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Fixed Header Styles and Scroll Effect (Consistent) */
+        .fixed-header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .scrolled-header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Nav link animation (Consistent) */
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #007bff; 
+            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Utility for the sleek, minimalist separator */
+        .sleek-divider {
+            height: 3px;
+            width: 80px;
+            background-color: #0056b3;
+            margin: 1.5rem 0;
+            border-radius: 9999px;
+        }
+
+        /* Core Philosophy Box Animation */
+        .philosophy-box {
+            position: relative;
+            background-color: #e6f0ff; 
+            border-left: 5px solid #0056b3;
+            transition: background-color 0.3s ease;
+        }
+        .philosophy-box:hover {
+            background-color: #dae8ff;
+        }
+
+        /* --- PROCESS & PRINCIPLES CONSISTENT STYLES --- */
+        
+        /* Consistent unhighlighted number color for both Process and Principles sections */
+        .index-number-muted { 
+            font-size: 2.25rem; 
+            font-weight: 800;
+            color: #d0e0f0; /* Consistent muted color for both sections */
+            transition: color 0.3s ease;
+        }
+
+        /* Hover behavior for Horizontal Process Cards */
+        .horizontal-index-item:hover .index-number-muted {
+            color: #0056b3; 
+        }
+        
+        /* Background and Divider for the Horizontal Process Containers */
+        .index-container {
+            background-color: #ffffff;
+            border: 1px solid var(--tw-border-corporate-border);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--tw-shadow-modern); 
+        }
+
+        /* --- FOUNDATIONAL PRINCIPLES (REDESIGNED VERTICAL) --- */
+
+        .principle-list-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--tw-border-corporate-border);
+            transition: background-color 0.3s ease;
+        }
+        .principle-list-item:hover {
+            background-color: #fafafa;
+        }
+
+        /* Principles Index Number - uses the consistent muted color */
+        .principle-index {
+            flex-shrink: 0;
+            font-size: 2.5rem; 
+            font-weight: 900;
+            color: #d0e0f0; /* MATCHES .index-number-muted */
+            width: 4rem;
+            text-align: center;
+            margin-top: -0.5rem;
+            transition: color 0.3s ease;
+        }
+        .principle-list-item:hover .principle-index {
+            color: #0056b3; 
+        }
+        .principle-content {
+            flex-grow: 1;
+            padding-left: 1.5rem;
+            border-left: 2px solid #e9ecef; /* Simple vertical separator */
+            transition: border-left-color 0.3s ease;
+        }
+        .principle-list-item:hover .principle-content {
+            border-left-color: #0056b3;
+        }
+        
+        /* --- HISTORY SECTION (CLEANER TEXT BLOCKS) --- */
+        .history-text-block {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .history-text-block:not(:last-child) {
+            border-bottom: 1px solid var(--tw-border-corporate-border);
+        }
+        .history-title {
+             /* Use corporate-primary for clear visual indexing */
+            color: var(--tw-colors-corporate-primary);
+        }
+
+    </style>
+    <script>
+        // JS for sticky header effect (Consistent)
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled-header');
+                } else {
+                    header.classList.remove('scrolled-header');
+                }
+            });
+        });
+    </script>
+</head>
+<body class="font-sans text-corporate-dark">
+    <header id="header" class="fixed-header bg-white fixed top-0 w-full z-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex justify-between items-center">
+            <a href="/modernist-portfolio/" class="logo-mark text-3xl font-extrabold text-corporate-primary tracking-tighter">MK.</a>
+            <nav class="space-x-8">
+                <a href="/modernist-portfolio/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200">Home</a>
+                <a href="/modernist-portfolio/projects/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200">Projects</a>
+                <a href="/modernist-portfolio/about/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200 active">Methodology</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-20 min-h-[80vh]">
+        
+        <section class="methodology-intro mb-20">
+            <h1 class="text-6xl font-extrabold text-corporate-dark leading-tight mb-4">The Systematic Approach</h1>
+            <p class="text-2xl text-corporate-secondary max-w-5xl leading-snug">
+                Our methodology is the application of <span class="text-corporate-primary font-semibold">Corporate Modernism</span>—a philosophy rooted in rational decision-making and commitment to systematic consistency. We build robust, scalable, and enduring systems designed for maximum efficiency.
+            </p>
+            <div class="sleek-divider"></div>
+        </section>
+
+        <div class="philosophy-box p-10 mb-20 rounded-lg shadow-modern">
+            <h2 class="text-3xl font-bold text-corporate-primary mb-3">Core Tenet: Engineered Simplicity</h2>
+            <p class="text-xl text-corporate-dark leading-relaxed">
+                We believe that complexity is a symptom of poor design, not a measure of capability. Our systems are characterized by clarity, predictability, and functional purity, ensuring long-term maintainability and superior user experience. This systematic rigor minimizes error and maximizes performance.
+            </p>
+        </div>
+        
+        <section class="systematic-process mb-24">
+            <h2 class="text-4xl font-bold text-corporate-dark mb-10 border-b border-corporate-border pb-4">Systematic Engineering Process</h2>
+            <p class="text-lg text-corporate-secondary mb-12 max-w-5xl">Every project is managed through three immutable, sequential phases to ensure predictable outcomes, minimize risk, and maintain system integrity from concept through deployment.</p>
+
+            <div class="grid grid-cols-3 divide-x divide-corporate-border index-container">
+                
+                <div class="horizontal-index-item p-6 transition-all duration-300 hover:bg-corporate-light">
+                    <span class="index-number-muted">01</span>
+                    <h3 class="text-lg font-bold text-corporate-dark mt-4 mb-2">Analysis & Planning</h3>
+                    <p class="text-sm text-corporate-secondary leading-normal">The quantitative stage. Requirements formalized, constraints defined, and optimal system architecture chosen. Deliverables: SRD and core wireframes.</p>
+                </div>
+
+                <div class="horizontal-index-item p-6 transition-all duration-300 hover:bg-corporate-light">
+                    <span class="index-number-muted">02</span>
+                    <h3 class="text-lg font-bold text-corporate-dark mt-4 mb-2">Design & Execution</h3>
+                    <p class="text-sm text-corporate-secondary leading-normal">Translating architecture into functional elements. Focus on modular component construction and adherence to grid integrity.</p>
+                </div>
+
+                <div class="horizontal-index-item p-6 transition-all duration-300 hover:bg-corporate-light">
+                    <span class="index-number-muted">03</span>
+                    <h3 class="text-lg font-bold text-corporate-dark mt-4 mb-2">Validation & Deployment</h3>
+                    <p class="text-sm text-corporate-secondary leading-normal">Rigorous functional testing against established metrics. Deployment uses standardized, repeatable protocols.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="design-principles">
+            <h2 class="text-4xl font-bold text-corporate-dark mb-10 border-b border-corporate-border pb-4">Foundational Principles</h2>
+            <p class="text-lg text-corporate-secondary mb-12 max-w-5xl">Our work is guided by three non-negotiable standards derived directly from the International Typographic Style, ensuring maximum clarity and long-term viability.</p>
+
+            <div class="bg-white border border-corporate-border rounded-lg shadow-modern divide-y divide-corporate-border">
+                
+                <div class="principle-list-item p-4 pr-6">
+                    <span class="principle-index">01</span>
+                    <div class="principle-content">
+                        <h3 class="text-xl font-bold text-corporate-dark mb-1">Form Follows Function</h3>
+                        <p class="text-base text-corporate-secondary leading-relaxed">Eliminate ornamentation. Design must serve essential purpose and utility above all else.</p>
+                    </div>
+                </div>
+                
+                <div class="principle-list-item p-4 pr-6">
+                    <span class="principle-index">02</span>
+                    <div class="principle-content">
+                        <h3 class="text-xl font-bold text-corporate-dark mb-1">Systematic Grid</h3>
+                        <p class="text-base text-corporate-secondary leading-relaxed">Meticulous use of a modular grid to ensure proportional consistency and predictable scaling across all components.</p>
+                    </div>
+                </div>
+
+                <div class="principle-list-item p-4 pr-6">
+                    <span class="principle-index">03</span>
+                    <div class="principle-content">
+                        <h3 class="text-xl font-bold text-corporate-dark mb-1">Unambiguous Clarity</h3>
+                        <p class="text-base text-corporate-secondary leading-relaxed">Prioritizing sans-serif typography, ample white space, and limited color to reduce cognitive load and simplify information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="style-history mt-24 pt-10 border-t border-corporate-border">
+            <h3 class="text-4xl font-bold text-corporate-dark mb-10 flex items-center">
+                <svg class="h-8 w-8 text-corporate-primary mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                History & Lineage
+            </h3>
+            
+            <div class="divide-y divide-corporate-border">
+                
+                <div class="history-text-block">
+                    <h4 class="text-2xl font-bold mb-3 history-title">Roots in European Modernism</h4>
+                    <p class="text-lg text-corporate-secondary leading-relaxed max-w-5xl">
+                        The aesthetic traces its direct roots to the mid-20th-century Modernism movement, specifically the intellectual rigor of European design schools like the Bauhaus and the mathematically precise International Typographic Style (Swiss Style).
+                    </p>
+                </div>
+                
+                <div class="history-text-block">
+                    <h4 class="text-2xl font-bold mb-3 history-title">Rejection of Ornament</h4>
+                    <p class="text-lg text-corporate-secondary leading-relaxed max-w-5xl">
+                        Pioneers rejected ornate decoration, championing simplicity and functionality. This philosophy, built on geometric shapes, sans-serif fonts, and asymmetrical grid layouts, became the universal visual language of post-WWII corporate branding.
+                    </p>
+                </div>
+
+                <div class="history-text-block border-b-0">
+                    <h4 class="text-2xl font-bold mb-3 history-title">Systematic Global Adoption</h4>
+                    <p class="text-lg text-corporate-secondary leading-relaxed max-w-5xl">
+                        In the post-WWII era, this clear, systematic approach was adopted by major corporations—often referred to as the International Corporate Style—to create cohesive, recognizable brand identities across international markets. This systematic DNA is what ensures our design remains timeless and globally effective.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-corporate-border bg-corporate-light mt-20 py-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-corporate-secondary text-sm">
+            <p>&copy; 2025 MK. All rights reserved. Identity System Ver 2.0. | Engineered for <span class="text-corporate-primary font-medium">Longevity and Consistency</span>.</p>
+        </div>
+    </footer>
+</body>
+</html>
