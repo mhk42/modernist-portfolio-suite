@@ -77,6 +77,18 @@
     </nav>
 
     <main> 
+    <!-- Breadcrumb: Index > Page -->
+    <div class="bg-white/0 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm text-cm-gray py-3" aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2">
+                    <li><a href="/modernist-portfolio-suite/" class="hover:text-cm-accent">Home</a></li>
+                    <li class="text-gray-300">›</li>
+                    <li class="text-cm-dark font-semibold">Portfolio</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
         <!-- 1. Hero Section - The Creator Archetype -->
         <section id="hero" class="min-h-[80vh] flex flex-col justify-center items-center text-center py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -205,12 +217,26 @@
 
         <!-- 5. Reciprocity: Calendly Booking -->
         <section id="booking" class="py-20 bg-white">
-            <div class="max-w-4xl mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold mb-4">Let's Audit Your Infrastructure</h2>
-                <p class="text-xl text-cm-gray mb-12">I provide a complimentary 15-minute system audit to identifying scaling bottlenecks. No strings attached.</p>
-                
-                <!-- Calendly Inline Widget -->
-                <div class="calendly-inline-widget" data-url="https://calendly.com/your-username/15min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-4 text-center">Let's Audit Your Infrastructure</h2>
+                <p class="text-xl text-cm-gray mb-12 text-center">I provide a complimentary 30 minute system audit to identifying scaling bottlenecks. No strings attached.</p>
+
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-8 grid md:grid-cols-2 gap-6 items-center">
+                    <div class="text-center md:text-left">
+                        <div class="inline-flex items-center mb-4">
+                            <span class="px-3 py-1 bg-cm-light text-sm rounded-full font-semibold text-cm-dark">Free 30‑min Audit</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Book a focused, technical audit</h3>
+                        <p class="text-cm-gray mb-4">We'll review architecture, bottlenecks, and quick wins. Expect an actionable summary you can use immediately.</p>
+                        <a href="https://calendly.com/muhammadhkhan03/30min" target="_blank" rel="noopener" class="inline-block mt-2 px-4 py-2 bg-cm-accent text-white rounded-lg font-semibold hover:bg-cm-accent/90 transition">Open booking in a new tab</a>
+                    </div>
+
+                    <div class="w-full rounded-xl overflow-hidden border border-gray-100">
+                        <!-- Calendly Inline Widget (responsive container) -->
+                        <div class="calendly-inline-widget w-full h-[640px]" data-url="https://calendly.com/muhammadhkhan03/30min" style="min-width:320px;height:640px;"></div>
+                    </div>
+                </div>
+
                 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             </div>
         </section>
@@ -269,7 +295,7 @@
             const formStatus = document.getElementById('form-status');
 
             // Replace this URL with your actual Zapier Webhook URL
-            const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/your-id/your-token/';
+            const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/25742357/uam2c92/';
 
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
