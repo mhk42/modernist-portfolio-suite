@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Khan Portfolio Showcase</title>
+    <!-- External Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* BASE RESET & THEME TOKENS */
+        :root {
+            --cm-dark: #1c1c1e;
+            --cm-black: #0a0a0b;
+            --cm-light: #f5f5f7;
+            --cm-gray: #8e8e93;
+            --cm-accent: #2f80ed;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--cm-black);
+            font-family: 'Inter', sans-serif;
+            color: var(--cm-gray);
+            line-height: 1.6;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+
+        /* SLIDE CONTAINER */
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--cm-dark);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 80px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+
+        /* DECORATIVE ACCENTS */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle at top right, rgba(47, 128, 237, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            bottom: 60px;
+            right: 80px;
+            width: 80px;
+            height: 4px;
+            background: var(--cm-accent);
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--cm-light);
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: 72px; font-weight: 800; line-height: 1.1; }
+        h2 { font-size: 48px; font-weight: 600; margin-bottom: 30px; }
+        h3 { font-size: 28px; color: var(--cm-accent); margin-bottom: 15px; }
+        
+        .slide-header {
+            border-left: 6px solid var(--cm-accent);
+            padding-left: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* LAYOUTS */
+        .flex-center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            height: 100%;
+        }
+
+        .tiles {
+            display: flex;
+            gap: 30px;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tile {
+            flex: 1;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 16px;
+            max-width: 520px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 220px;
+            overflow: hidden;
+        }
+
+        .tile i {
+            font-size: 40px;
+            color: var(--cm-accent);
+            margin-bottom: 14px;
+        }
+        .tile h3 { font-size: 20px; margin-bottom: 6px; }
+
+        /* COMPONENTS */
+        .img-box {
+            width: 100%;
+            height: 100%;
+            background: #252525;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quote-box {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .quote-box blockquote {
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--cm-light);
+            position: relative;
+        }
+
+        .quote-box blockquote::before {
+            content: '“';
+            font-size: 120px;
+            color: var(--cm-accent);
+            position: absolute;
+            left: -40px;
+            top: -60px;
+            opacity: 0.3;
+        }
+
+        /* PERFORMANCE BARS */
+        .perf-bar {
+            margin-bottom: 25px;
+        }
+        .perf-label { font-weight: 700; margin-bottom: 10px; display: block; }
+        .perf-track {
+            height: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .perf-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cm-accent), #56ccf2);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            color: white;
+            font-weight: 900;
+        }
+
+        ul.styled-list {
+            list-style: none;
+        }
+        ul.styled-list li {
+            margin-bottom: 25px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 24px;
+        }
+        ul.styled-list li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--cm-accent);
+        }
+
+        .cta-box {
+            border: 1px solid var(--cm-accent);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+        /* Hook slide styles */
+        .hook-text {
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--cm-light);
+            line-height: 1.05;
+            margin-bottom: 12px;
+        }
+        .hook-sub {
+            color: var(--cm-gray);
+            font-size: 20px;
+            margin-top: 24px;
+        }
+        /* Slide grid centering adjustments */
+        .grid-2 .quote-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            text-align: left;
+        }
+        .grid-2 .tile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: INTRO -->
+    <section class="slide">
+        <div class="flex-center">
+            <h1>Engineering the<br>Modern Ecosystem</h1>
+            <p style="font-size: 28px; margin-top: 30px;">A showcase of architecture, branding, and AI collaboration.</p>
+            <p style="margin-top: 60px; font-weight: 900; color: var(--cm-light); font-size: 24px;">Muhammad Khan</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: THE HOOK -->
+    <section class="slide">
+        <div class="flex-center">
+            <div style="max-width:900px; text-align:center;">
+                <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--cm-accent); font-weight: 700; margin-bottom: 24px;">The Hook</p>
+                <div class="hook-text">I architect AI systems that don't just think — they work.</div>
+                <div class="hook-sub">Engineering-first AI: pragmatic, reliable, and designed to deliver production results.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: PERSONAL BRAND -->
+    <section class="slide">
+        <div class="slide-header">
+            <p style="text-transform: uppercase; color: var(--cm-gray); letter-spacing: 2px;">Case Study 01</p>
+            <h2>The Creator Archetype</h2>
+        </div>
+        <div class="grid-2">
+            <div>
+                <h3>Identity Strategy</h3>
+                <p style="font-size: 24px;">My portfolio uses <strong>Corporate Modernism</strong> to signal high-level engineering authority.</p>
+                <p style="margin-top: 20px;">By adopting the <strong>Creator Archetype</strong>, I position my services as vision-led architecture rather than just code execution.</p>
+            </div>
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000" alt="Modern Architecture">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: PERSUASION -->
+    <section class="slide">
+        <div class="slide-header">
+            <h2>Persuasion & Psychology</h2>
+        </div>
+        <div class="tiles">
+            <div class="tile">
+                <i class="fa-solid fa-gift"></i>
+                <h3>Reciprocity</h3>
+                <p>Offering a Free Infrastructure Audit on my portfolio to build trust and provide value before any financial transaction.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Authority</h3>
+                <p>Using strict grid systems and technical case studies to establish an unshakeable engineering presence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: CLIENT WORK -->
+    <section class="slide">
+        <div class="slide-header">
+            <p style="text-transform: uppercase; color: var(--cm-gray); letter-spacing: 2px;">Case Study 02</p>
+            <h2>NexusFlow AI Execution</h2>
+        </div>
+        <div class="grid-2">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" alt="AI Interface">
+            </div>
+            <div>
+                <h3>Problem Solved</h3>
+                <p style="font-size: 24px;">Startups lose thousands in tool-fatigue. NexusFlow AI consolidates these into a single neural hub.</p>
+                <p style="margin-top: 20px;">The sales funnel uses <strong>Scarcity</strong> (founding member alerts) to drive immediate conversions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: TECHNICAL -->
+    <section class="slide">
+        <div class="slide-header">
+            <h2>Technical Mastery</h2>
+        </div>
+        <div class="grid-2">
+            <div>
+                <div class="perf-bar">
+                    <span class="perf-label">Performance</span>
+                    <div class="perf-track"><div class="perf-fill">100/100</div></div>
+                </div>
+                <div class="perf-bar">
+                    <span class="perf-label">Accessibility</span>
+                    <div class="perf-track"><div class="perf-fill">100/100</div></div>
+                </div>
+                <div class="perf-bar">
+                    <span class="perf-label">SEO</span>
+                    <div class="perf-track"><div class="perf-fill">100/100</div></div>
+                </div>
+            </div>
+            <div>
+                <h3>Architecture</h3>
+                <p>Built with a <strong>CI/CD Pipeline</strong> via GitHub Actions and fluid responsive design using Tailwind's utility-first logic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: COURSE LEARNINGS -->
+    <section class="slide">
+        <div class="slide-header">
+            <h2>IS117 Key Takeaways</h2>
+        </div>
+        <div class="flex-center" style="align-items: flex-start; text-align: left;">
+            <ul class="styled-list">
+                <li><strong>Version Control Is the Backbone:</strong> GitHub enables safe iteration, collaboration, and traceability at scale.</li>
+                <li><strong>Design Is Behavioral:</strong> Visual hierarchy, spacing, and persuasion patterns directly shape user decisions.</li>
+                <li><strong>Responsiveness Is a Baseline:</strong> Interfaces must adapt fluidly across devices to remain usable and credible.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: AI COLLABORATION -->
+    <section class="slide">
+        <div class="slide-header">
+            <h2>AI Collaboration Analysis</h2>
+        </div>
+        <div class="grid-2">
+            <div class="quote-box" style="text-align: left;">
+                <div style="font-size:36px; font-weight:700; color:var(--cm-light); line-height:1.08;">Our collaboration shifted from 'coding' to 'architecting' through systematic prompt-engineering.</div>
+            </div>
+            <div class="tile">
+                <h3>Strategy Evolution</h3>
+                <p>Moving forward, I will implement <strong>Multi-Agent Prompting</strong> to peer-review code before deployment, further increasing output reliability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: CALL TO ACTION -->
+    <section class="slide">
+        <div class="flex-center">
+            <h1>Let's work together.</h1>
+            <div class="cta-box">
+                <p style="font-weight: 900; color: var(--cm-light); font-size: 24px; margin-bottom: 5px;">Muhammad Khan</p>
+                <p>Senior Full-Stack Architect | mhk42.github.io</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -45,6 +45,25 @@
             opacity: 0;
             pointer-events: none;
         }
+        /* Mock window polish */
+        .mock-window { box-shadow: 0 10px 30px rgba(28,28,30,0.08); }
+        .mock-controls > div { width:10px; height:10px; border-radius:9999px; box-shadow: 0 1px 0 rgba(0,0,0,0.08) inset; }
+        .mock-bar { height:10px; border-radius:6px; background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); }
+        .mock-bar.accent { background: linear-gradient(90deg, rgba(47,128,237,0.22), rgba(47,128,237,0.12)); }
+
+        /* Shimmer effect for subtle motion */
+        .shimmer { position:relative; overflow:hidden; }
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -140%;
+            width: 40%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+            transform: skewX(-12deg);
+            animation: shimmer 2.2s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes shimmer { 0% { left: -140%; } 100% { left: 160%; } }
     </style>
 </head>
 <body class="bg-white text-cm-dark">
@@ -174,17 +193,17 @@
                         </button>
                     </div>
                     <div class="relative order-1 lg:order-2 px-4 md:px-0">
-                        <div class="bg-cm-dark aspect-square rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col justify-between overflow-hidden">
-                             <div class="w-full h-2/3 bg-white/5 rounded-xl border border-white/10 p-4">
-                                <div class="flex space-x-2 mb-4">
+                        <div class="bg-cm-dark aspect-square rounded-3xl p-6 md:p-8 flex flex-col justify-between overflow-hidden mock-window">
+                             <div class="w-full h-2/3 bg-white/5 rounded-xl border border-white/10 p-4 shimmer">
+                                <div class="flex items-center gap-3 mb-4 mock-controls">
                                     <div class="w-3 h-3 bg-red-400 rounded-full"></div>
                                     <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
                                     <div class="w-3 h-3 bg-green-400 rounded-full"></div>
                                 </div>
                                 <div class="space-y-3">
-                                    <div class="h-2 w-3/4 bg-white/10 rounded"></div>
-                                    <div class="h-2 w-1/2 bg-white/10 rounded"></div>
-                                    <div class="h-2 w-5/6 bg-cm-accent/40 rounded"></div>
+                                    <div class="mock-bar w-3/4"></div>
+                                    <div class="mock-bar w-1/2"></div>
+                                    <div class="mock-bar accent w-5/6"></div>
                                 </div>
                              </div>
                              <div class="mt-4 flex justify-between items-end">
