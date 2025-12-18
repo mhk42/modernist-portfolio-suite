@@ -1,6 +1,7 @@
 # Corporate Modernist Portfolio Suite
 
-**Live Site:** [View Live Project](https://mhk42.github.io/modernist-portfolio-suite/)
+**Live Site:** [View Live Project](https://mhk42.github.io/modernist-portfolio-suite/)  
+**Presentation:** [View Project Presentation](https://mhk42.github.io/modernist-portfolio-suite/presentation/)
 
 A unified ecosystem of premium web experiences built with a **Corporate Modernist** aesthetic. This project showcases the intersection of engineering precision and minimal design, leveraging Tailwind CSS for rapid, responsive deployment and visual consistency.
 
